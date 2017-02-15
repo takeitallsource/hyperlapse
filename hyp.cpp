@@ -310,7 +310,7 @@ int main(int argc, char* argv[]) {
   stabilizer->setFrameSource(source);
 
   Ptr<MotionEstimatorRansacL2> est = makePtr<MotionEstimatorRansacL2>(MM_HOMOGRAPHY);
-  Ptr<KeypointBasedMotionEstimatorGpu> kbest = makePtr<KeypointBasedMotionEstimatorGpu>(est);
+  KeypointBasedMotionEstimator* kbest = new KeypointBasedMotionEstimator(est);
   Ptr<IOutlierRejector> outlierRejector = makePtr<NullOutlierRejector>();
   kbest->setOutlierRejector(outlierRejector);
   stabilizer->setMotionEstimator(kbest);
